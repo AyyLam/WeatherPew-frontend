@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Nav from './components/Nav'
 import User from './components/User'
 import Login from './components/Login'
@@ -12,6 +13,7 @@ class App extends Component {
   }
 
   handleLogin = (name) => {
+    debugger
     this.setState({
       user: name
     })
@@ -25,7 +27,14 @@ class App extends Component {
         <header className="App-header">
         </header>
         <Nav name={this.state.user}/>
-        <Login handleLogin={this.handleLogin} user={this.state.user}/>
+        <Switch>
+          <Route path="/login" render={() => {
+            return <Login handleLogin={this.handleLogin} user={this.state.user}/>
+          }} />
+          <Route path="/John" render={() => {
+            return  <User user={this.state.user}/>
+          }} />
+        </Switch>
       </div>
     );
   }
