@@ -9,16 +9,11 @@ class ForecastList extends React.Component {
   }
 
   renderOneDay = () => {
-    return this.props.weatherOneData.map((day) => {
-      return <ForecastItem day={day} length={1}/>
-    })
+      // debugger
+      return <ForecastItem data={this.props.weatherData} />
+
   }
 
-  renderFiveDay = () => {
-    return this.props.weatherFiveData.map((day) => {
-      return <ForecastItem day={day} length={5}/>
-    })
-  }
 
   handleToggle = () => {
     this.setState({
@@ -27,15 +22,16 @@ class ForecastList extends React.Component {
   }
 
   render () {
+    console.log(this.props.weatherData);
     return (
       <div>
         <button onClick={this.handleToggle}>
           {this.state.toggle ? "Today's Weather" : "5 Day Forecast"}
         </button>
         Switcheroo
-        <p>
-        {this.state.toggle ? this.renderOneDay() : this.renderFiveDay()}
-        </p>
+        <div>
+         {this.state.toggle ? this.renderOneDay() : this.renderFiveDay()}
+       </div>
       </div>
       )
   }
