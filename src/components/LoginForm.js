@@ -15,12 +15,19 @@ class LoginForm extends React.Component {
   render () {
     console.log(this.state.username)
     return (
-      <div>
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" value={this.state.username} onChange={this.handleChange}/>
-        <input type="submit" value="Submit"/>
-        </form>
-        </div>
+      <div className="loginform">
+        <h3>Log In</h3>
+        <form onSubmit={this.handleSubmit}>
+          <label>Username</label>
+          <input type="text" value={this.state.username} onChange={this.handleChange}/>
+          <br/>
+          <label>Password</label>
+          <input type="password"/>
+          <br/>
+          <input type="submit" value="Submit"/>
+          </form>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Moon_rotating_full_220px.gif"/>
+      </div>
       )
   }
   handleSubmit = (e) => {

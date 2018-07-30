@@ -68,7 +68,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         </header>
-        <Nav name={this.state.user}/>
+        <Nav user={this.state.user}/>
         {this.state.user ? <SearchInput handleClick={this.handleClick} /> : null}
         <Switch>
 

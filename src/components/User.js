@@ -3,10 +3,10 @@ import FavoriteList from './FavoriteList'
 
 
 export default class User extends React.Component {
-  
+
 
   render(){
-    console.log('data:', this.state.data, this.state.searchedCity)
+    console.log(this.props.data, this.props.searchedCity)
     return(
       <div>
       User page
