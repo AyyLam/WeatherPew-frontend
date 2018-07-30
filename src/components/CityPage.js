@@ -6,14 +6,10 @@ const APIKey = `222f7b891045d46aae991ed06a422d63`
 class CityPage extends React.Component {
 
 // All of this has to go to User
-
-
-
-
-
   handleFavorite = () => {
-    this.props.addFavedCity(this.state.weatherOneData)
+    this.props.addFavedCity(this.props.weatherData)
   }
+  
   render () {
     return (
       <div>
