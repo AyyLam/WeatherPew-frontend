@@ -13,7 +13,6 @@ class App extends Component {
   }
 
   handleLogin = (name) => {
-    debugger
     this.setState({
       user: name
     })
