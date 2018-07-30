@@ -7,16 +7,15 @@ import Login from './components/Login'
 import getWeather from './adapter/adapter.js'
 import CityPage from './components/CityPage.js'
 import SearchInput from './components/SearchInput.js'
-
-
-
+import { Switch, Route, withRouter} from 'react-router-dom'
 
 class App extends Component {
 
   state = {
     user: "",
     searchedCity: "",
-    favedCity: "", // From clicking the fav button
+    clickedFavCity: "",
+    favedCity: [], // From clicking the fav button
     data: {
       city: '',
       maxTemp: "",
@@ -25,11 +24,10 @@ class App extends Component {
   }
 
   handleLogin = (name) => {
-    debugger
     this.setState({
       user: name
     })
-
+    this.props.history.push('/user')
   }
 
   handleClick = (city) => {
@@ -42,44 +40,54 @@ class App extends Component {
           alert("Bad call")
         } else {
           this.setState({
-          data: {
-            city: weather.city_name,
-            maxTemp: weather.data[0].max_temp,
-            minTemp: weather.data[0].min_temp
-          }
-        })}
-      }))
+            data: {
+              city: weather.city_name,
+              maxTemp: weather.data[0].max_temp,
+              minTemp: weather.data[0].min_temp
+            }
+          })
+        }
+      })
+    )
+    this.props.history.push('/city')
   }
 
 
     addFavedCity = (data) => {
       this.setState({
-        favedCity: data
+        favedCity: [...this.state.favedCity, data]
       })
+      this.props.history.push('/user')
     }
 
-
+    //pass down method to handle favorite city click that redorects to city page
 
   render() {
+    console.log(this.state.favedCity);
     return (
       <div className="App">
         <header className="App-header">
         </header>
         <Nav name={this.state.user}/>
-        {this.state.user ? <User user={this.state.user} handleClick={this.handleClick} data={this.state.data}/> && <SearchInput handleClick={this.handleClick} /> : <Login handleLogin={this.handleLogin} user={this.state.user}/>}
-        {this.state.data.city ? <CityPage city={this.state.searchedCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> : <SearchInput handleClick={this.handleClick} />}
+        {this.state.user ? <SearchInput handleClick={this.handleClick} /> : null}
+        <Switch>
 
-        {/*<Switch>
-          <Route path="/login" render={() => {
+        {// {this.state.user ? <User user={this.state.user} handleClick={this.handleClick} data={this.state.data}/> && <SearchInput handleClick={this.handleClick} /> : <Login handleLogin={this.handleLogin} user={this.state.user}/>}
+        // {this.state.data.city ?  : <SearchInput handleClick={this.handleClick} />}
+      }
+        <Route path="/login" render={() => {
             return <Login handleLogin={this.handleLogin} user={this.state.user}/>
           }} />
-          <Route path="/John" render={() => {
-            return  <User user={this.state.user}/>
+        <Route path="/user" render={(routerProps) => {
+            routerProps.match.params.username
+            return  <User user={this.state.user} favedCity={this.state.favedCity} clickedFavCity={this.state.clickedFavCity}/>
           }} />
-      </Switch>*/}
+        <Route path='/city' render={() => {
+            return <CityPage city={this.state.searchedCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

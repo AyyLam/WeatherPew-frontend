@@ -1,12 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 const FavoriteCity = (props) => {
 
   return(
     //iterate through user.cities to render fav cities
     <div>
-      {/*<p>{props.user.city}</p>*/}
-      {/*props.user.city.temperature*/}
+      <Link to='/city' onClick={console.log}>
+      <div>{props.name}</div>
+    </Link>
+      <div>{props.maxTemp}</div>
     </div>
   )
 }
