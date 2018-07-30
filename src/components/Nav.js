@@ -3,7 +3,10 @@ import React from 'react'
 const Nav = (props) => {
 
     return (
-      <div>{props.user}</div>
+      <div>
+      NAV BAR
+        Name: {props.user}
+      </div>
     )
 
 }
