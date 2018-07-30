@@ -18,14 +18,16 @@ class App extends Component {
 
   }
 
+
+
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <header className="App-header">
         </header>
         <Nav name={this.state.user}/>
         <Login handleLogin={this.handleLogin} user={this.state.user}/>
+        <User user={this.props.user}/>
       </div>
     );
   }
