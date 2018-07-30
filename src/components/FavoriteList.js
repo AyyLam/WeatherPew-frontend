@@ -5,14 +5,14 @@ import FavoriteCity from './FavoriteCity'
 
 const FavoriteList = (props) => {
   console.log('props.data', props.data);
-  const renderCities = () => {
+  {/*const renderCities = () => {
     props.data.map((city) => {
       <FavoriteCity name={city.city_name} timezone={city.timezone} />
     })
-  }
+  }*/}
   return(
     <div>
-    {renderCities()}
+    
     </div>
   )
 }
