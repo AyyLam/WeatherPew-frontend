@@ -19,13 +19,13 @@ export default class User extends React.Component {
   handleClick = (city) => {
     this.setState({
       searchedCity: city
-    })
-    getWeather(this.state.searchedCity)
+    }, () => getWeather(this.state.searchedCity)
       .then(data => {
         this.setState({
           data
         })
-      })
+      }))
+
   }
 
 

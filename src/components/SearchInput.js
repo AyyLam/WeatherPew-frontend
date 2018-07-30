@@ -5,24 +5,24 @@ class SearchInput extends React.Component {
     input: ''
   }
 
-  handleChange = (city) => {
+  handleChange = (e) => {
     this.setState({
-      input: city
+      input: e.target.value
     })
-    this.props.handleClick(this.state.input)
+    
   }
 
   handleSubmit = (e) => {
       e.preventDefault()
+      this.props.handleClick(this.state.input)
   }
 
   render(){
-    console.log(this.state.input);
     return(
      <div>
        <form onSubmit={this.handleSubmit}>
        <label>Search cities:</label>
-       <input type="text" value={this.state.input} onChange={(e) => this.handleChange(e.target.value)}/>
+       <input type="text" value={this.state.input} onChange={this.handleChange}/>
        <input type="submit" value="submit" />
        </form>
      </div>
