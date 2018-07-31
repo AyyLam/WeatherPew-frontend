@@ -2,16 +2,27 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const FavoriteCity = (props) => {
+class FavoriteCity extends React.Component {
+  state = {
+    clickedCityId: ''
+  }
 
-  return(
-    //iterate through user.cities to render fav cities
-    <div>
-      <Link to='/city' onClick={console.log}>
-      <div>{props.name}</div>
-    </Link>
-      <div>{props.maxTemp}</div>
-    </div>
-  )
+   handleRedirect = () => {
+    this.setState({
+      clickedCityId: this.props.key
+    }, () => this.props.favCityPage(this.state.clickedCityId))
+  }
+
+  render(){
+    console.log('id:', this.state.clickedCityId);
+    return(
+      <div>
+
+      {/*<div>{this.props.name}</div>*/}
+
+        <div>{this.props.maxTemp}</div>
+      </div>
+    )
+  }
 }
 export default FavoriteCity

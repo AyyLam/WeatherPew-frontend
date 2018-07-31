@@ -9,7 +9,7 @@ export default class User extends React.Component {
     return(
       <div>
       User page for {this.props.user.name}
-      <FavoriteList data={this.props.data} favedCity={this.props.favedCity}/>
+      <FavoriteList data={this.props.data} favCityPage={this.props.favCityPage} favedCity={this.props.favedCity}/>
       </div>
     )
   }

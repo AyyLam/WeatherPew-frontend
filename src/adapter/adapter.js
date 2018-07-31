@@ -9,7 +9,6 @@ export const getWeather = (input) => {
 
 export const getCity = (input) => {
   const baseUrl = `http://localhost:3030/api/v1/city_users/${input}`
-
   return fetch(baseUrl)
           .then(r => r.json())
 }

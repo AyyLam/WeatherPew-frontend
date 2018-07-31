@@ -7,7 +7,7 @@ import Login from './components/Login'
 import { getWeather, createUser, createCity, createCityUser } from './adapter/adapter.js'
 import CityPage from './components/CityPage.js'
 import SearchInput from './components/SearchInput.js'
-import { Switch, Route, withRouter} from 'react-router-dom'
+import { Switch, Route, withRouter, Redirect} from 'react-router-dom'
 
 class App extends Component {
 
@@ -45,6 +45,15 @@ class App extends Component {
     })
   )
     this.props.history.push('/user')
+  }
+
+  handleLogout = () => {
+    this.setState({
+      user: {
+        name: '',
+        id: ''
+      }
+    })
   }
 
   handleClick = (city) => {
@@ -92,15 +101,19 @@ class App extends Component {
           this.setState({
             favedCity: [...this.state.favedCity, data]
           }, () => createCityUser(this.state.data, this.state.user)
-          )}
+          )
+          this.props.history.push('/user')
+        }
         }
       )
-      this.props.history.push('/user')
     }
 
+    favCityPage = (data) => {
+      console.log('here!!!');
+
+    }
 
     //pass down method to handle favorite city click that redorects to city page
-
   render() {
     console.log('city:', this.state.data);
     console.log('user:', this.state.user);
@@ -109,18 +122,23 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         </header>
-        <Nav user={this.state.user}/>
+        <Nav user={this.state.user} logout={this.handleLogout}/>
         {this.state.user.name ? <SearchInput handleClick={this.handleClick} /> : null}
         <Switch>
-        <Route path="/login" render={() => {
-            return <Login handleLogin={this.handleLogin} />
-          }} />
-        <Route path="/user" render={(routerProps) => {
-            routerProps.match.params.username
-            return  <User user={this.state.user} favedCity={this.state.favedCity} clickedFavCity={this.state.clickedFavCity}/>
-          }} />
-        <Route path='/city' render={() => {
-            return <CityPage city={this.state.searchedCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>
+          <Route path="/login" render={() => {
+              return <Login handleLogin={this.handleLogin} />
+            }} />
+          <Route path="/user" render={(routerProps) => {
+              routerProps.match.params.username
+              return  <User user={this.state.user} favCityPage={this.favCityPage} favedCity={this.state.favedCity} clickedFavCity={this.state.clickedFavCity}/>
+            }} />
+          <Route path='/city/:id' render={(routerProps) => {
+            this.state.data.id ? routerProps.match.params.data.id : null
+                return <CityPage city={this.state.searchedCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>
+          <Route path='/city' render={() => {
+              return <CityPage city={this.state.searchedCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>
+            <Route path='/' render={() =>
+               <Redirect to='/login'/>} />
         </Switch>
       </div>
     );
