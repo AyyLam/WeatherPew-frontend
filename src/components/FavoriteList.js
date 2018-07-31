@@ -12,7 +12,7 @@ const FavoriteList = (props) => {
     })
   }
   return(
-    <div>
+    <div class="grid-container">
       {renderCities()}
     </div>
   )

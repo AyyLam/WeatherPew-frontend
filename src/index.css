@@ -1,9 +1,44 @@
+/* Fonts */
+@font-face {
+  font-family: 'Astron Boy Italic';
+  src: url('./fonts/astron boy italic.ttf');
+}
+
+@font-face {
+  font-family: 'Baveuse3D';
+  src: url('./fonts/Baveuse3D.ttf');
+}
+
+@font-face {
+  font-family: 'Blazed';
+  src: url('./fonts/Blazed.ttf');
+}
+
+@font-face {
+  font-family: 'SnowtopCaps';
+  src: url('./fonts/SnowtopCaps.otf');
+}
+
+@font-face {
+  font-family: 'Char';
+  src: url('./fonts/Char.ttf');
+}
+
+@font-face {
+  font-family: 'KarmaFuture';
+  src: url('./fonts/KarmaFuture.ttf');
+}
+
+
+/* Body */
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'KarmaFuture';
+  font-size: 20px;
 }
 
+/* Nav bar */
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -12,15 +47,36 @@ body {
   align-items: center;
   text-align: center;
   border-bottom: 4px solid black;
-  background: lightblue;
+  background: lightblue ;
 }
+
+
+/* City Page */
+.city-name {
+  padding-top: 0.5em;
+  font-size: 5em;
+  font-family: 'Baveuse3D';
+}
+
+.info-maxTemp {
+  font-family: 'Blazed';
+  font-size: 4em;
+}
+.info-minTemp {
+  font-family: 'SnowtopCaps';
+  font-size: 4em;
+}
+.info-Temp {
+  font-family: 'Baveuse3D';
+  font-size: 4em;
+}
+
+
+/* Login Form */
 
 .loginform {
   padding-top: 70px;
-  padding-right: 90px;
-  background-image: url("sun.gif");
-  background-repeat: no-repeat;
-
+  background-position: top;
 }
 
 input {
@@ -28,6 +84,7 @@ input {
     padding: 8px 12px;
     margin: 30px 10px;
     box-sizing: border-box;
+    height: 100%;
 }
 
 input[type="submit"]{
@@ -36,7 +93,6 @@ input[type="submit"]{
   color: #fff;
   border: 1px solid #eee;
   border-radius: 20px;
-  box-shadow: 5px 5px 5px #eee;
   text-shadow:none;
 
 }
@@ -46,6 +102,60 @@ input[type="submit"]:hover {
   color: #fff;
   border: 1px solid #eee;
   border-radius: 20px;
-  box-shadow: 5px 5px 5px #eee;
   text-shadow: none;
+}
+
+/* Fav Button  */
+
+.favbutton {
+  border-style: none;
+  background-color: transparent;
+  background-image: url('https://clipart.info/images/ccovers/1518056312pink-heart-transparent-background.png');
+}
+
+.favbutton:hover {
+  background: white;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  text-shadow: none;
+}
+
+.favbuttonImg {
+  height: 70px;
+  width: 70px;
+}
+
+/* Fav List */
+
+.favedCityTitle {
+  padding-top: 4em;
+  font-size: 2em;
+  font-family: 'KarmaFuture';
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+}
+
+.city-name-fl {
+  padding-top: 0.5em;
+  font-size: 2em;
+  font-family: 'Baveuse3D';
+}
+
+.info-maxTemp-fl {
+  font-family: 'Blazed';
+  font-size: 1em;
+}
+.info-minTemp-fl {
+  font-family: 'SnowtopCaps';
+  font-size: 1em;
+}
+.info-Temp-fl {
+  font-family: 'Baveuse3D';
+  font-size: 1em;
 }

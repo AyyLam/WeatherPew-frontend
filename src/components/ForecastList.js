@@ -28,9 +28,8 @@ class ForecastList extends React.Component {
         <button onClick={this.handleToggle}>
           {this.state.toggle ? "Today's Weather" : "5 Day Forecast"}
         </button>
-        Switcheroo
         <div>
-         {this.state.toggle ? this.renderOneDay() : this.renderFiveDay()}
+         {this.state.toggle ? this.renderOneDay() : this.renderOneDay()}
        </div>
       </div>
       )

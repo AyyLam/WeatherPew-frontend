@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  height: 180vmin;
+  background-image: url("sun.gif");
+  background-position: top;
+  background-size: cover;
+
 }
 
 .App-logo {

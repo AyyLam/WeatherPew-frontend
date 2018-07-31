@@ -6,11 +6,11 @@ const FavoriteCity = (props) => {
 
   return(
     //iterate through user.cities to render fav cities
-    <div>
+    <div >
       <Link to='/city' onClick={console.log}>
-      <div>{props.name}</div>
+      <div className="city-name-fl">{props.name}</div>
     </Link>
-      <div>{props.maxTemp}</div>
+      <div className="info-maxTemp-fl">{props.maxTemp}</div>
     </div>
   )
 }
