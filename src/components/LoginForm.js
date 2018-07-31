@@ -7,13 +7,11 @@ class LoginForm extends React.Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.value)
     this.setState({
       username: e.target.value
     })
   }
   render () {
-    console.log(this.state.username)
     return (
       <div>
       <form onSubmit={this.handleSubmit}>

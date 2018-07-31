@@ -4,7 +4,7 @@ import './App.css';
 import Nav from './components/Nav'
 import User from './components/User'
 import Login from './components/Login'
-import getWeather from './adapter/adapter.js'
+import { getWeather, createUser, createCity, createCityUser } from './adapter/adapter.js'
 import CityPage from './components/CityPage.js'
 import SearchInput from './components/SearchInput.js'
 import { Switch, Route, withRouter} from 'react-router-dom'
@@ -12,12 +12,16 @@ import { Switch, Route, withRouter} from 'react-router-dom'
 class App extends Component {
 
   state = {
-    user: "",
+    user: {
+      name: "",
+      id: ""
+    },
     searchedCity: "",
     clickedFavCity: "",
-    favedCity: [], // From clicking the fav button
+    favedCity: [],
     data: {
       city: '',
+      id: '',
       maxTemp: "",
       minTemp: ''
     }
@@ -25,8 +29,21 @@ class App extends Component {
 
   handleLogin = (name) => {
     this.setState({
-      user: name
-    })
+      user: {
+        name: name
+      }
+    }, () => createUser(this.state.user)
+    .then(data => {
+
+      console.log('createuser:', data)
+      this.setState({
+      user: {
+        name: data.username,
+        id: data.id
+      },
+
+    }) })
+  )
     this.props.history.push('/user')
   }
 
@@ -45,7 +62,18 @@ class App extends Component {
               maxTemp: weather.data[0].max_temp,
               minTemp: weather.data[0].min_temp
             }
-          })
+          }, () => createCity(this.state.data)
+            .then(data => {
+              this.setState({
+              data: {
+                city: data.name,
+                id: data.id,
+                maxTemp: data.maxTemp,
+                minTemp: data.minTemp
+              }
+            }
+            )}
+          ))
         }
       })
     )
@@ -53,30 +81,47 @@ class App extends Component {
   }
 
 
+  createACity = () => {
+    console.log('creating city');
+    return createCity(this.state.data)
+      .then(data => {
+        this.setState({
+        data: {
+          city: data.name,
+          id: data.id,
+          maxTemp: data.maxTemp,
+          minTemp: data.minTemp
+        }
+      }
+      )}
+    )
+  }
+
     addFavedCity = (data) => {
       this.setState({
         favedCity: [...this.state.favedCity, data]
-      })
+      }, () => createCityUser(this.state.data, this.state.user)
+        .then(data => console.log('infavedcitypromise:', data))
+    )
       this.props.history.push('/user')
     }
+
 
     //pass down method to handle favorite city click that redorects to city page
 
   render() {
-    console.log(this.state.favedCity);
+    console.log('city:', this.state.data);
+    console.log('user:', this.state.user);
+    console.log('favedcities:', this.state.favedCity);
     return (
       <div className="App">
         <header className="App-header">
         </header>
         <Nav name={this.state.user}/>
-        {this.state.user ? <SearchInput handleClick={this.handleClick} /> : null}
+        {this.state.user.name ? <SearchInput handleClick={this.handleClick} /> : null}
         <Switch>
-
-        {// {this.state.user ? <User user={this.state.user} handleClick={this.handleClick} data={this.state.data}/> && <SearchInput handleClick={this.handleClick} /> : <Login handleLogin={this.handleLogin} user={this.state.user}/>}
-        // {this.state.data.city ?  : <SearchInput handleClick={this.handleClick} />}
-      }
         <Route path="/login" render={() => {
-            return <Login handleLogin={this.handleLogin} user={this.state.user}/>
+            return <Login handleLogin={this.handleLogin} />
           }} />
         <Route path="/user" render={(routerProps) => {
             routerProps.match.params.username
