@@ -34,15 +34,15 @@ class App extends Component {
       }
     }, () => createUser(this.state.user)
     .then(data => {
-
       console.log('createuser:', data)
       this.setState({
-      user: {
-        name: data.username,
-        id: data.id
-      },
-
-    }) })
+        user: {
+          name: data.user.username,
+          id: data.user.id
+        },
+        favedCity: data.cities
+      })
+    })
   )
     this.props.history.push('/user')
   }
@@ -64,6 +64,8 @@ class App extends Component {
             }
           }, () => createCity(this.state.data)
             .then(data => {
+              console.log('increatecitypromise:', data);
+              // debugger
               this.setState({
               data: {
                 city: data.name,
@@ -77,32 +79,22 @@ class App extends Component {
         }
       })
     )
-    this.props.history.push('/city')
-  }
-
-
-  createACity = () => {
-    console.log('creating city');
-    return createCity(this.state.data)
-      .then(data => {
-        this.setState({
-        data: {
-          city: data.name,
-          id: data.id,
-          maxTemp: data.maxTemp,
-          minTemp: data.minTemp
-        }
-      }
-      )}
-    )
+    this.props.history.push('/city');
   }
 
     addFavedCity = (data) => {
-      this.setState({
-        favedCity: [...this.state.favedCity, data]
-      }, () => createCityUser(this.state.data, this.state.user)
-        .then(data => console.log('infavedcitypromise:', data))
-    )
+      createCity(data)
+        .then(data => {
+          console.log('infavedcitypromise:', data);
+          if (this.state.favedCity.map((city) => data.name === city.name)) {
+            alert('This city is already in your favorites!')
+          } else {
+          this.setState({
+            favedCity: [...this.state.favedCity, data]
+          }, () => createCityUser(this.state.data, this.state.user)
+          )}
+        }
+      )
       this.props.history.push('/user')
     }
 
@@ -117,7 +109,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         </header>
-        <Nav name={this.state.user}/>
+        <Nav user={this.state.user}/>
         {this.state.user.name ? <SearchInput handleClick={this.handleClick} /> : null}
         <Switch>
         <Route path="/login" render={() => {

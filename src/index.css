@@ -3,3 +3,49 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 50px;
+  grid-gap: 6em;
+  align-items: center;
+  text-align: center;
+  border-bottom: 4px solid black;
+  background: lightblue;
+}
+
+.loginform {
+  padding-top: 70px;
+  padding-right: 90px;
+  background-image: url("sun.gif");
+  background-repeat: no-repeat;
+
+}
+
+input {
+    width: 20%;
+    padding: 8px 12px;
+    margin: 30px 10px;
+    box-sizing: border-box;
+}
+
+input[type="submit"]{
+  width: 5%;
+  background: black;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #eee;
+  text-shadow:none;
+
+}
+
+input[type="submit"]:hover {
+  background: #016ABC;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #eee;
+  text-shadow: none;
+}

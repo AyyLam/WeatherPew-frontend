@@ -9,7 +9,7 @@ class SearchInput extends React.Component {
     this.setState({
       input: e.target.value
     })
-    
+
   }
 
   handleSubmit = (e) => {
@@ -23,7 +23,7 @@ class SearchInput extends React.Component {
        <form onSubmit={this.handleSubmit}>
        <label>Search cities:</label>
        <input type="text" value={this.state.input} onChange={this.handleChange}/>
-       <input type="submit" value="submit" />
+       <input type="submit" value="Submit" />
        </form>
      </div>
     )
