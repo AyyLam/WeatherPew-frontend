@@ -7,6 +7,7 @@ class FavoriteCity extends React.Component {
     clickedCityId: ''
   }
 
+
    handleRedirect = () => {
     this.setState({
       clickedCityId: this.props.key
@@ -20,9 +21,10 @@ class FavoriteCity extends React.Component {
 
       {/*<div>{this.props.name}</div>*/}
 
-        <div>{this.props.maxTemp}</div>
+        <div className="info-maxTemp-fl">{this.props.maxTemp}</div>
       </div>
     )
   }
+
 }
 export default FavoriteCity

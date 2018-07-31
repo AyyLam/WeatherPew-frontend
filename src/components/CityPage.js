@@ -9,11 +9,11 @@ class CityPage extends React.Component {
   handleFavorite = () => {
     this.props.addFavedCity(this.props.weatherData)
   }
-  
+
   render () {
     return (
       <div>
-      <button onClick={this.handleFavorite}>Favorite Me!</button>
+      <button className="favbutton" onClick={this.handleFavorite}><img className="favbuttonImg" src="https://clipart.info/images/ccovers/1518056312pink-heart-transparent-background.png"/></button>
         <ForecastList weatherData={this.props.weatherData}/>
       </div>
       )

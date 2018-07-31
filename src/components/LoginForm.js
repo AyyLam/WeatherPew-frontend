@@ -24,7 +24,6 @@ class LoginForm extends React.Component {
           <br/>
           <input type="submit" value="Submit"/>
           </form>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Moon_rotating_full_220px.gif"/>
       </div>
       )
   }
