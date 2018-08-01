@@ -119,7 +119,7 @@ class App extends Component {
   render() {
     console.log('city:', this.state.data);
     console.log('user:', this.state.user);
-    console.log('favedcities:', this.state.favedCity);
+    console.log('clicked fav city:', this.state.clickedFavCity);
     return (
       <div className="App">
         <header className="App-header">

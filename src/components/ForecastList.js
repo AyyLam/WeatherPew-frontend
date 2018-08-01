@@ -24,7 +24,6 @@ class ForecastList extends React.Component {
   }
 
   render () {
-    console.log(this.props.clickedFavCity);
     return (
       <div>
         <button onClick={this.handleToggle}>
