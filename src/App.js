@@ -131,6 +131,7 @@ class App extends Component {
     }
 
     favCityPage = (data) => {
+      console.log('here!!!');
       this.setState({
         clickedFavCity: data
       })
@@ -140,7 +141,7 @@ class App extends Component {
     //pass down method to handle favorite city click that redorects to city page
   render() {
     console.log('faved cities:', this.state.favedCity);
-    console.log('user:', this.state.user);
+    console.log('data state:', this.state.data);
     console.log('clicked fav city:', this.state.clickedFavCity);
     return (
       <div className="App">

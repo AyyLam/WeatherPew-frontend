@@ -17,7 +17,7 @@ class CityPage extends React.Component {
         <ForecastList weatherData={this.props.weatherData} clickedFavCity={this.props.clickedFavCity}/>
       </div>
       )
-  }
+    }
 
 
 
