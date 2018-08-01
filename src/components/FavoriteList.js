@@ -9,7 +9,7 @@ const FavoriteList = (props) => {
   const renderCities = () => {
     return props.favedCity.map((city) => {
       return <div><div className="city-name-fl"><Link to={`/city/${city.id}`}>{city.name}</Link></div>
-      <FavoriteCity favCityPage={props.favCityPage} city={city} id={city.id} clickedFavCity={props.clickedFavCity} /> </div>
+      <FavoriteCity favCityPage={props.favCityPage} city={city} key={city.id} clickedFavCity={props.clickedFavCity} /> </div>
     })
   }
 

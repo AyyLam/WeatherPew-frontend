@@ -29,6 +29,11 @@
   src: url('./fonts/KarmaFuture.ttf');
 }
 
+@font-face {
+  font-family: 'Rain';
+  src: url('./fonts/Rain.ttf');
+}
+
 
 /* Body */
 body {
@@ -58,17 +63,43 @@ body {
   font-family: 'Baveuse3D';
 }
 
+.info {
+  font-family: 'KarmaFuture';
+  font-size: 2.5em;
+}
+
 .info-maxTemp {
   font-family: 'Blazed';
-  font-size: 4em;
+  font-size: 2.5em;
+  color: OrangeRed;
 }
+
 .info-minTemp {
   font-family: 'SnowtopCaps';
-  font-size: 4em;
+  font-size: 2.5em;
+  color: DodgerBlue;
 }
+
 .info-Temp {
-  font-family: 'Baveuse3D';
-  font-size: 4em;
+  font-family: 'Rain';
+  font-size: 2.5em;
+}
+
+.info-windSpd {
+  font-family: 'Astron Boy Italic';
+  font-size: 2.5em;
+}
+
+.info-pop {
+  font-family: 'Rain';
+  font-size: 2.5em;
+  color: LightSlateGrey;
+}
+
+.info-rh {
+  font-family: 'Rain';
+  font-size: 2.5em;
+  color: SaddleBrown;
 }
 
 
@@ -147,19 +178,26 @@ input[type="submit"]:hover {
 
 .city-name-fl {
   padding-top: 0.5em;
-  font-size: 2em;
+  font-size: 1.5em;
   font-family: 'Baveuse3D';
+}
+
+.info-fl {
+  font-family: 'KarmaFuture';
+  font-size: 0.3em;
 }
 
 .info-maxTemp-fl {
   font-family: 'Blazed';
-  font-size: 1em;
+  font-size: 0.4em;
+  color: OrangeRed;
 }
 .info-minTemp-fl {
   font-family: 'SnowtopCaps';
-  font-size: 1em;
+  font-size: 0.4em;
+  color: DodgerBlue;
 }
 .info-Temp-fl {
   font-family: 'Baveuse3D';
-  font-size: 1em;
+  font-size: 0.4em;
 }
