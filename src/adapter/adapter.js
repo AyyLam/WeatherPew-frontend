@@ -21,7 +21,9 @@ export const createCity = (input) => {
       'Content-type': 'application/json',
       Accept: 'application/json'
     },
-    body: JSON.stringify({name: input.city, maxTemp: input.maxTemp, minTemp: input.minTemp})
+    body: JSON.stringify({name: input.city, maxTemp: input.maxTemp, minTemp: input.minTemp, temp: input.temp,
+    wind_spd: input.wind_spd, pop: input.pop, datetime: input.datetime, rh: input.rh, country_code: input.country_code,
+    state_code: input.state_code})
   }
   return fetch(baseUrl, options)
           .then(r => r.json())

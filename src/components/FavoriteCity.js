@@ -16,12 +16,13 @@ class FavoriteCity extends React.Component {
 
   render(){
     console.log('id:', this.state.clickedCityId);
+    debugger
     return(
       <div>
 
-      {/*<div>{this.props.name}</div>*/}
+      {/*<div>{this.props.city.name}</div>*/}
 
-        <div className="info-maxTemp-fl">{this.props.maxTemp}</div>
+        <div className="info-maxTemp-fl">{this.props.city.maxTemp}</div>
       </div>
     )
   }

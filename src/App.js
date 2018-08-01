@@ -23,7 +23,14 @@ class App extends Component {
       city: '',
       id: '',
       maxTemp: "",
-      minTemp: ''
+      minTemp: '',
+      temp: '',
+      wind_spd: '',
+      precipitation: '',
+      datetime: '',
+      rh: '',
+      country_code: '',
+      state_code: ''
     }
   }
 
@@ -69,7 +76,14 @@ class App extends Component {
             data: {
               city: weather.city_name,
               maxTemp: weather.data[0].max_temp,
-              minTemp: weather.data[0].min_temp
+              minTemp: weather.data[0].min_temp,
+              temp: weather.data[0].temp,
+              wind_spd: weather.data[0].wind_spd,
+              pop: weather.data[0].pop,
+              datetime: weather.data[0].datetime,
+              rh: weather.data[0].rh,
+              country_code: weather.country_code,
+              state_code: weather.state_code
             }
           }, () => createCity(this.state.data)
             .then(data => {
@@ -80,7 +94,14 @@ class App extends Component {
                 city: data.name,
                 id: data.id,
                 maxTemp: data.maxTemp,
-                minTemp: data.minTemp
+                minTemp: data.minTemp,
+                temp: data.temp,
+                wind_spd: data.wind_spd,
+                pop: data.pop,
+                datetime: data.datetime,
+                rh: data.rh,
+                country_code: data.country_code,
+                state_code: data.state_code
               }
             }
             )}
@@ -94,19 +115,19 @@ class App extends Component {
     addFavedCity = (data) => {
       createCity(data)
         .then(data => {
-           if (this.state.favedCity.find((city) =>
-             city.name === data.name )){
-            alert('This city is already in your faved cities!')
+          console.log('infavedcitypromise:', data);
+          if (this.state.favedCity.map((city) => data.name === city.name)) {
+            alert('This city is already in your favorites!')
           } else {
           this.setState({
             favedCity: [...this.state.favedCity, data]
           }, () => createCityUser(this.state.data, this.state.user)
-          )}
+          )
           this.props.history.push('/user')
-        })
         }
-
-
+        }
+      )
+    }
 
     favCityPage = (data) => {
       console.log('here!!!');
