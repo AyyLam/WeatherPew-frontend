@@ -15,7 +15,7 @@ class FavoriteCity extends React.Component {
 
     return(
       <div className="city-name-fl" >
-        <Link to={`/city/${this.props.id}`} onClick={this.handleRedirect}>{this.props.name}</Link>
+        <Link to={`/city/${this.props.id}`} onClick={this.handleRedirect}>{this.props.city.name}</Link>
       {/*<div>{this.props.name}</div>*/}
 
         <div className="info-maxTemp-fl">{this.props.city.maxTemp}</div>

@@ -89,7 +89,7 @@ input {
 }
 
 input[type="submit"]{
-  width: 5%;
+  width: 65px;
   background: black;
   color: #fff;
   border: 1px solid #eee;

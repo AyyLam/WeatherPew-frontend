@@ -9,11 +9,7 @@ class ForecastList extends React.Component {
   }
 
   renderOneDay = () => {
-    if (this.props.clickedFavCity) {
-      return <ForecastItem data={this.props.clickedFavCity} />
-    } else {
-    return <ForecastItem data={this.props.weatherData} />
-    }
+    return <ForecastItem data={this.props.weatherData} clickedFavCity={this.props.clickedFavCity} />
   }
 
 
