@@ -94,19 +94,19 @@ class App extends Component {
     addFavedCity = (data) => {
       createCity(data)
         .then(data => {
-          console.log('infavedcitypromise:', data);
-          if (this.state.favedCity.map((city) => data.name === city.name)) {
-            alert('This city is already in your favorites!')
+           if (this.state.favedCity.find((city) =>
+             city.name === data.name )){
+            alert('This city is already in your faved cities!')
           } else {
           this.setState({
             favedCity: [...this.state.favedCity, data]
           }, () => createCityUser(this.state.data, this.state.user)
-          )
+          )}
           this.props.history.push('/user')
+        })
         }
-        }
-      )
-    }
+
+
 
     favCityPage = (data) => {
       console.log('here!!!');
