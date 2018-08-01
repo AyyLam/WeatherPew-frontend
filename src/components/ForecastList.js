@@ -9,9 +9,11 @@ class ForecastList extends React.Component {
   }
 
   renderOneDay = () => {
-      // debugger
-      return <ForecastItem data={this.props.weatherData} />
-
+    if (this.props.clickedFavCity) {
+      return <ForecastItem data={this.props.clickedFavCity} />
+    } else {
+    return <ForecastItem data={this.props.weatherData} />
+    }
   }
 
 
@@ -22,6 +24,7 @@ class ForecastList extends React.Component {
   }
 
   render () {
+    console.log(this.props.clickedFavCity);
     return (
       <div>
         <button onClick={this.handleToggle}>

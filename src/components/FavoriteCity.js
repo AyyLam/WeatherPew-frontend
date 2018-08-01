@@ -3,22 +3,19 @@ import { Link } from 'react-router-dom'
 
 
 class FavoriteCity extends React.Component {
-  state = {
-    clickedCityId: ''
-  }
 
 
-   handleRedirect = () => {
-    this.setState({
-      clickedCityId: this.props.key
-    }, () => this.props.favCityPage(this.state.clickedCityId))
-  }
+  handleRedirect = () => {
+   this.props.favCityPage(this.props.city)
+
+ }
+
 
   render(){
-    console.log('id:', this.state.clickedCityId);
-    return(
-      <div>
 
+    return(
+      <div className="city-name-fl" >
+        <Link to={`/city/${this.props.id}`} onClick={this.handleRedirect}>{this.props.name}</Link>
       {/*<div>{this.props.name}</div>*/}
 
         <div className="info-maxTemp-fl">{this.props.maxTemp}</div>

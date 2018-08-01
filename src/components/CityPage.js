@@ -14,7 +14,7 @@ class CityPage extends React.Component {
     return (
       <div>
       <button className="favbutton" onClick={this.handleFavorite}><img className="favbuttonImg" src="https://clipart.info/images/ccovers/1518056312pink-heart-transparent-background.png"/></button>
-        <ForecastList weatherData={this.props.weatherData}/>
+        <ForecastList weatherData={this.props.weatherData} clickedFavCity={this.props.clickedFavCity}/>
       </div>
       )
   }

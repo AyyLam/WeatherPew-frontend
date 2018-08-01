@@ -5,17 +5,20 @@ import { Link } from 'react-router-dom'
 
 
 
-const FavoriteList = (props) => {
-  const renderCities = () => {
-    return props.favedCity.map((city) => {
-      return <div><div className="city-name-fl"><Link to={`/city/${city.id}`}>{city.name}</Link></div>   <FavoriteCity name={city.name} favCityPage={props.favCityPage} maxTemp={city.maxTemp} key={city.id} clickedFavCity={props.clickedFavCity} /> </div>
+class FavoriteList extends React.Component {
+
+
+   renderCities = () => {
+    return this.props.favedCity.map((city) => {
+      return <div><div ></div>   <FavoriteCity name={city.name} city={city} favCityPage={this.props.favCityPage} maxTemp={city.maxTemp} id={city.id} clickedFavCity={this.props.clickedFavCity} /> </div>
     })
   }
-
-  return(
-    <div className="grid-container">
-      {renderCities()}
-    </div>
-  )
+  render() {
+    return(
+      <div className="grid-container">
+        {this.renderCities()}
+      </div>
+    )
+  }
 }
 export default FavoriteList
