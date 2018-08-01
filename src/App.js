@@ -116,8 +116,9 @@ class App extends Component {
       createCity(data)
         .then(data => {
           console.log('infavedcitypromise:', data);
-          if (this.state.favedCity.map((city) => data.name === city.name)) {
-            alert('This city is already in your favorites!')
+          if (this.state.favedCity.find((city) =>
+             city.name === data.name )){
+            alert('This city is already in your faved cities!')
           } else {
           this.setState({
             favedCity: [...this.state.favedCity, data]
@@ -138,7 +139,7 @@ class App extends Component {
 
     //pass down method to handle favorite city click that redorects to city page
   render() {
-    console.log('city:', this.state.data);
+    console.log('faved cities:', this.state.favedCity);
     console.log('user:', this.state.user);
     console.log('clicked fav city:', this.state.clickedFavCity);
     return (
