@@ -130,7 +130,9 @@ class App extends Component {
     }
 
     favCityPage = (data) => {
-      console.log('here!!!');
+      this.setState({
+        clickedFavCity: data
+      })
 
     }
 
@@ -155,9 +157,9 @@ class App extends Component {
             }} />
           <Route path='/city/:id' render={(routerProps) => {
             this.state.data.id ? routerProps.match.params.data.id : null
-                return <CityPage city={this.state.searchedCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>
+                return <CityPage city={this.state.searchedCity} clickedFavCity={this.state.clickedFavCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>
           <Route path='/city' render={() => {
-              return <CityPage city={this.state.searchedCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>
+              return <CityPage city={this.state.searchedCity} clickedFavCity={this.state.clickedFavCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>
             <Route path='/' render={() =>
                <Redirect to='/login'/>} />
         </Switch>

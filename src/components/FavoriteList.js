@@ -12,11 +12,12 @@ const FavoriteList = (props) => {
       <FavoriteCity favCityPage={props.favCityPage} city={city} key={city.id} clickedFavCity={props.clickedFavCity} /> </div>
     })
   }
-
-  return(
-    <div className="grid-container">
-      {renderCities()}
-    </div>
-  )
+  render() {
+    return(
+      <div className="grid-container">
+        {this.renderCities()}
+      </div>
+    )
+  }
 }
 export default FavoriteList
