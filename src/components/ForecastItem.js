@@ -14,7 +14,7 @@ class ForecastItem extends React.Component {
           <div className="info-maxTemp">High: {this.props.clickedFavCity.maxTemp}ºF</div>
           <div className="info-minTemp">Low: {this.props.clickedFavCity.minTemp}ºF</div>
           <div className="info-windSpd">Wind Speed: {this.props.clickedFavCity.wind_spd}mph</div>
-          <div className="info-pop">Rain? {this.props.clickedFavCity.pop}%</div>
+          <div className="info-pop"> {this.props.clickedFavCity.pop}% Chance of Rain/Snow</div>
           <div className="info-pop">Relative Humidity: {this.props.clickedFavCity.rh}%</div>
         </div>
       )

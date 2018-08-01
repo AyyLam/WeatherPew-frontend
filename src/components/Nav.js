@@ -7,10 +7,14 @@ const Nav = (props) => {
     return props.handleLogout()
   }
 
-  
+  const handleState = () => {
+    props.resetFav()
+  }
+
+
     return (
       <div className="wrapper">
-        {props.user.name ? <Link to='/user' >{props.user.name}'s Profile </Link> : <Link to='/login'> Log In </Link>}
+        {props.user.name ? <Link to='/user' onClick={handleState}>{props.user.name}'s Profile </Link> : <Link to='/login'> Log In </Link>}
         {props.user.name ? <Link to='/login' onClick={handleClick}> Log Out </Link> : null}
       </div>
     )

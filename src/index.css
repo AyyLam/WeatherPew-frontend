@@ -146,14 +146,16 @@ input[type="submit"]:hover {
   border-style: none;
   background-color: transparent;
   background-image: url('https://clipart.info/images/ccovers/1518056312pink-heart-transparent-background.png');
+  transition: all .2s ease-in-out;
 }
 
 .favbutton:hover {
-  background: white;
+  /* background: hsla(0, 100%, 90%, 0.3); */
   color: #fff;
-  border: 1px solid #eee;
+  /* border: 1px solid #eee; */
   border-radius: 20px;
   text-shadow: none;
+  transform: scale(1.5);
 }
 
 .favbuttonImg {

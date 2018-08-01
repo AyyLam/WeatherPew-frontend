@@ -73,6 +73,7 @@ class App extends Component {
           alert("Bad call")
         } else {
           this.setState({
+            clickedFavCity: "",
             data: {
               city: weather.city_name,
               maxTemp: weather.data[0].max_temp,
@@ -135,7 +136,12 @@ class App extends Component {
       this.setState({
         clickedFavCity: data
       })
+    }
 
+    resetFavCity = () => {
+      this.setState({
+        clickedFavCity: ""
+      })
     }
 
     //pass down method to handle favorite city click that redorects to city page
@@ -147,7 +153,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         </header>
-        <Nav user={this.state.user} logout={this.handleLogout}/>
+        <Nav user={this.state.user} logout={this.handleLogout}  resetFav={this.resetFavCity}/>
         {this.state.user.name ? <SearchInput handleClick={this.handleClick} /> : null}
         <Switch>
           <Route path="/login" render={() => {
@@ -158,7 +164,7 @@ class App extends Component {
               return  <User user={this.state.user} favCityPage={this.favCityPage} favedCity={this.state.favedCity} clickedFavCity={this.state.clickedFavCity}/>
             }} />
           <Route path='/city/:id' render={(routerProps) => {
-            this.state.data.id ? routerProps.match.params.data.id : null
+            // this.state.data.id ? routerProps.match.params.data.id : null
                 return <CityPage city={this.state.searchedCity} clickedFavCity={this.state.clickedFavCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>
           <Route path='/city' render={() => {
               return <CityPage city={this.state.searchedCity} clickedFavCity={this.state.clickedFavCity} addFavedCity={this.addFavedCity} weatherData={this.state.data}/> }}/>

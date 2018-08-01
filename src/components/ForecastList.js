@@ -22,9 +22,9 @@ class ForecastList extends React.Component {
   render () {
     return (
       <div>
-        <button onClick={this.handleToggle}>
+      {/*  <button onClick={this.handleToggle}>
           {this.state.toggle ? "Today's Weather" : "5 Day Forecast"}
-        </button>
+        </button>*/}
         <div>
          {this.state.toggle ? this.renderOneDay() : this.renderOneDay()}
        </div>
