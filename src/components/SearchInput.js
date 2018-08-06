@@ -16,7 +16,6 @@ class SearchInput extends React.Component {
       e.preventDefault()
       this.props.handleClick(this.state.input)
       document.getElementById('searchForm').reset()
-      // e.target.reset()
   }
 
   render(){
