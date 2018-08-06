@@ -15,14 +15,16 @@ class SearchInput extends React.Component {
   handleSubmit = (e) => {
       e.preventDefault()
       this.props.handleClick(this.state.input)
+      document.getElementById('searchForm').reset()
+      // e.target.reset()
   }
 
   render(){
     return(
      <div>
-       <form onSubmit={this.handleSubmit}>
+       <form id='searchForm' onSubmit={this.handleSubmit}>
        <label>Search cities:</label>
-       <input type="text" value={this.state.input} onChange={this.handleChange}/>
+       <input type="text" name={this.state.input} onChange={this.handleChange}/>
        <input type="submit" value="Submit" />
        </form>
      </div>
